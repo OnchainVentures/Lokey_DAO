@@ -1,0 +1,7 @@
+{
+  "name": "_lk_ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
