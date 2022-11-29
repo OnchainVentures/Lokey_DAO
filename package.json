@@ -25,9 +25,15 @@
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
     "@ionic/angular": "^6.1.9",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@openzeppelin/contracts": "^4.7.3",
+    "bootstrap": "^5.2.2",
+    "hardhat": "^2.12.1",
     "ionicons": "^6.0.3",
+    "mocha": "^10.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
+    "web3": "^1.8.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

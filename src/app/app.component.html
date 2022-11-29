@@ -1,3 +1,41 @@
 <ion-app>
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo-container" routerLink="/home">
+      <img class="logo-img" src="../assets/temp.jpg" alt="lokey-logo" />
+    </div>
+    <div class="menu-container">
+      <!-- Nav buttons for desktop version -->
+      <ng-container>
+        <div class="menu-item" id="ecosystem" routerLink="/ecosystem">
+          <span>Ecosystem</span>
+        </div>
+        <div class="menu-item" id="governance" routerLink="/governance">
+          <span>Governance</span>
+        </div>
+        <div class="menu-item" id="stake" routerLink="/stake">
+          <span>Stake</span>
+        </div>
+        <div class="menu-item">
+          <span>Road Map</span>
+        </div>
+        <div class="red-icon" id="about-us" routerLink="/about-us">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </div>
+        <div class="red-icon">
+          <ion-icon name="trophy-outline"></ion-icon>
+        </div>
+
+        <ng-container>
+          <!-- <div class="red-icon btn btn-outline" id="connect-wallet">
+            Enter App
+          </div> -->
+          <div class="red-icon btn btn-outline" id="connect-wallet" (click)="connectWallet()">
+            Connect Wallet
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

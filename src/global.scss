@@ -24,3 +24,15 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+.red-btn-outline {
+    color: var(--color-red);
+    border: 2px solid var(--color-red);
+    padding: 10px 30px !important;
+    font-weight: 600;
+    
+    &:hover {
+        background-color: white;
+        color: black;
+        border-color: black;
+    }
+}

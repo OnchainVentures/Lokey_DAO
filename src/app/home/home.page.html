@@ -1,20 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-app>
+  <div class="landing-container">
+      <div class="landing-content">
+          <h2 class="header" *ngIf="!staking">Activate Your City</h2>
+          <div class="top-cities-container" *ngIf="!staking">
+            <div class="top-city"></div>
+            <div class="top-city"></div>
+            <div class="top-city"></div>
+            <div class="top-city"></div>
+          </div>
+          <div *ngIf="staking" class="stake-card">
+            <div class="stake-header">Stake {{current_pair_token.toUpperCase()}} into LoCity</div>
+            <div class="img-container">
+                <img *ngIf="current_pair_token == 'usdc'" src="../../assets/usdcoin.jpg" alt="USDC" class="usdc-img">
+            </div>
+            <div class="stake-content" *ngIf="staking">
+              <input type="number" placeholder="USDC amount" [(ngModel)]="token_input_value">
+              <ion-button class="stake-btn" (click)="stakeCoin()" [attr.disabled]="!connected || network !== 1 ? 'disabled' : null">Stake</ion-button>
+            </div>
+          </div>
+      </div>
   </div>
-</ion-content>
+</ion-app>
