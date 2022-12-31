@@ -1,89 +1,65 @@
+      Cryptocurrency mining has traditionally required specialized hardware and high energy consumption. In this paper, we propose a new crypto mining device that utilizes proof of space-time to secure the network and earn tokens by verifying transactions. The device uses long range radio to transmit and sign transactions, making it a decentralized and energy-efficient option for mining. By utilizing this innovative approach, the device can provide a steady stream of income for its owners while also contributing to the security and stability of the network. In this paper, we will discuss the technical details and potential benefits of this unique mining device.
+
+    Lokey is a network of devices that only communicate using Bluetooth and long-range radio frequencies. Devices called 'nodes' validate transaction without the need for expensive and energy intensive computers and could potentially serve as an alternative to Bitcoin. The network relies on distributed ledger technology, similar to a Bitcoin's blockchain, to record and verify transactions.
+
+    The advantage of this network is that it operates in a decentralized and distributed manner, with devices communicating directly with each other rather than relying on a central server or authority. This makes the network more resilient to attacks and outages, as there is no single point of failure.
+
+    By not having to rely on ever expanding computing reasources, Lokey is more energy efficient than traditional cryptocurrencies like Bitcoin, which rely on proof-of-work (PoW) to secure the network. The devices in the network only need to communicate with each other using Bluetooth and long-range radio frequencies, rather than using energy-intensive mining hardware to solve complex mathematical problems.
+
+    Lokey uses Proof of Space Time to create a unique alpha numeric code called a hash based on the location in time and space of a user. The Space Time hash is linked to a public address which is accessable with a private key. 
+
+Ethereum address using the Keccak-256 hashing algorithm:
+
+pragma solidity ^0.7.0;
+
+import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/SafeMath.sol";
+
+contract CoordinateHash {
+    using SafeMath for uint256;
+
+    // Coordinates are stored as two uint256 values (latitude and longitude)
+    uint256 public latitude;
+    uint256 public longitude;
+
+    // The address generated from the coordinates
+    address public coordinateAddress;
+
+    constructor(uint256 _latitude, uint256 _longitude) public {
+        latitude = _latitude;
+        longitude = _longitude;
+
+        // Concatenate the latitude and longitude values and hash them to create the coordinate address
+        bytes32 hash = keccak256(abi.encodePacked(latitude, longitude));
+        coordinateAddress = address(hash);
+    }
+}
+
+    This contract has two public variables, latitude and longitude, which store the user's location coordinates as unsigned 256-bit integers. It also has a public variable, coordinateAddress, which is the Ethereum address generated from the coordinates using the Keccak-256 hashing algorithm.
+
+    The contract's constructor function takes in the latitude and longitude values as arguments and assigns them to the latitude and longitude variables. It then concatenates the two values and hashes them using the keccak256() function to create the coordinateAddress. The abi.encodePacked() function is used to pack the values into a single byte array before hashing.
+
+    Proof of a unique point in space and time, also known as Proof of Location (PoL), is a type of cryptographic technique that can be used to verify the ownership of a crypto wallet. In this system, the owner of a wallet must prove that they are physically present at a specific location at a specific time in order to prove their ownership of the wallet.
+
+
+    The wallet owner initiates a proof of location request: The wallet owner initiates a request to prove their ownership of the wallet by providing a specific location and time at which they will perform the proof.
+
+    The wallet owner performs the proof: At the specified time, the wallet owner must physically go to the specified location and perform some action to prove their presence there. This might involve taking a photo or video at the location, or using a special device or app to send a message or data from the location.
+
+    The proof is verified: The proof is then sent to a verification server, which checks that the proof is genuine and that the wallet owner was indeed present at the specified location at the specified time. If the proof is valid, the wallet owner's ownership of the wallet is verified.
+
+PoL can be an effective way to verify ownership of a crypto wallet because it requires the wallet owner to physically be present at a specific location in order to perform the proof. This makes it difficult for anyone else to impersonate the wallet owner and gain access to the wallet. However, PoL systems can be complex and may require specialized hardware or software to perform the proof, and they may not be suitable for all types of wallet or use cases.
+
+    As an added layer of security, users have the option to utilize a Delegated Proof of Stake (DPoS) system. Stakers of Lokey's KEY token can vote on network proposals and earn additional KEY token by locking up for a period of time. The process of reaching consensus and validating transactions is carried out by a group of elected "delegates" who are responsible for representing the interests of the wider network. These delegates are chosen through a voting process, in which network participants can vote for the delegates they believe will best represent their interests.
+
+    Network participants nominate and vote for delegates: Network participants can nominate themselves or others as delegates, and other participants can then vote for the nominees they believe will be the most effective at representing their interests. The delegates with the most votes are elected to represent the network.
+
+    Delegates produce blocks and validate transactions: The elected delegates are responsible for producing new blocks and validating transactions in the network. They do this by listening for transactions on the network, adding them to a block, and then broadcasting the block to the rest of the network for validation.
+
+    Network participants validate and confirm blocks: Once a block has been broadcast to the network, other nodes can validate the transactions contained within it and confirm that they are valid. If a sufficient number of nodes agree that the block is valid, it can be added to the blockchain.
+
+    Delegates are rewarded for their efforts: As a reward for their efforts in producing and validating blocks, delegates may receive a portion of the transaction fees or other rewards earned by the network.
+
+
+
+
   
-  Introduction 
-  
-  Lokey is a Decentralized Autonomous Organization or a DAO that aims to connect people to online communities using a decentralized ledger. Unlike traditional organizations, which are typically controlled by a central authority, Lokey is decentralized and operates according to a set of rules encoded in its smart contracts. These rules are typically designed to be transparent and immutable, allowing the Lokey network to operate in a transparent and secure manner. Because of the decentralized nature of distributed ledger technology, decisions are made through consensus among its members, rather than being dictated by a single individual or group.
-	KEY is the governance token of Lokey. Governance tokens are a type of cryptocurrency and represent ownership in the DAO. These tokens give  holders the right to vote on how the Lokey DAO is run and on any proposals for changes to its underlying code. The exact mechanics of how governance tokens work can vary depending on the specific community within the Lokey DAO, but in general, they allow token holders to have a say in the direction of the organization and its decision-making process. Some governance tokens also give holders the ability to earn rewards for participating in the city’s DAO governance, such as by voting on proposals or contributing to the DAO's development.
-	Lokey’s decentralized governance model has the potential to disrupt traditional corporations by making it possible for individuals to come together and collaborate on a project without the need for a centralized authority or intermediary. Communities can create their own digital tokens to serve as the currency through a process called minting. Once completed, the community can utilize the governance token to vote on which crypto currency is included in the DAO. This model allows the population of a city to allocate the funds to the crypto currencies that they believe will appreciate overtime thus growing the value of their city’s tokens. The city residents can then decide to create a market for their coin by transferring the token to each other for goods and services. 
-	City tokens are allocated pro-rata for the amount of value staked for a given city. Each minted city receives a unique token name and a digital image representing the token. City tokens compete in value with other cities on the network. This creates a ranking system for points measured in the network token called KEY. Physical devices, called nodes, are awarded for staked value on Lokey. Nodes verify transactions and secure a local network that is not dependent on the internet for communication. 
-	
-Decentralized Voting
-
-	Lokey network allocates resources based on decentralized voting. The members of the network are also the owners so each participant decides how resources of the city coin are deployed. Decentralized voting is a way of conducting elections of confidence in which the computation of the vote is distributed among multiple individuals or entities rather than being centralized in a single body. This can be accomplished through the use of blockchain technology, which allows for secure and transparent record-keeping. In a decentralized voting system, each voter has a unique digital identity and votes are recorded on the blockchain in a way that ensures their security and anonymity. This allows for a more secure and transparent election process, as the decentralized nature of the system makes it difficult for any one person or entity to manipulate the vote.
-Lokey’s distributed ledger network has the potential to offer increased security, improved accessibility, enhanced transparency, and reduced cost compared to traditional voting systems. Decentralized voting using a distributed ledger network can potentially replace traditional voting systems in a number of ways:
-Increased security: With traditional voting systems, there is a risk of tampering with ballots or manipulation of results. A distributed ledger, on the other hand, is a decentralized and immutable record, meaning that it is almost impossible to alter the data once it is recorded. This ensures a higher level of security and integrity in the voting process.
-Improved accessibility: Traditional voting systems can be difficult for some individuals to access, especially for those who are unable to physically go to polling stations due to disabilities or distance. A decentralized voting system using a distributed ledger would allow individuals to cast their votes remotely, making the process more accessible to all eligible voters.
-Enhanced transparency: Traditional voting systems can be opaque, making it difficult to track the progress of the vote count and ensure that all ballots are being properly counted. A decentralized voting system using a distributed ledger would provide a transparent record of all votes, allowing for real-time tracking of the voting process and making it easier to detect any potential issues.
-Reduced cost: Traditional voting systems can be expensive to implement and maintain, due to the cost of printing and distributing ballots, hiring staff to run polling stations, and so on. A decentralized voting system using a distributed ledger would significantly reduce these costs, as it would eliminate the need for many of these processes.
-	Lokey decentralized voting can be used for digital asset governance. In traditional finance, proxy voting is a system that allows a person to appoint another person to cast a vote on their behalf. This type of voting is used when a shareholder of a company is unable to attend a shareholder meeting in person, but still wants to have their vote counted. In such cases, the shareholder can give a proxy, or a written authorization, to another person to attend the meeting and cast their vote. The proxy may be a trusted friend or associate of the shareholder, or it may be a representative of the company. In the case of cryptocurrency, a voter can control tokens. The tokens represent votes or value in the form of smart contracts.
-By using blockchain technology, voting can be achieved in a trustless manner without the need for multiple layers of middlemen. Lokey network allows for verified proof of voting with permanent receipts stored to a blockchain. This verified voting model is an improvement to the methods commonly used in traditional finance. 
-Lokey contains a distributed ledger for voting. A distributed ledger is a type of database that is shared, replicated, and synchronized among multiple sites, institutions, or geographies. It allows transactions to be recorded and verified digitally and in a decentralized manner, without the need for a central authority or intermediary. The most well-known example of a distributed ledger is the blockchain, which is the technology underlying cryptocurrencies like Bitcoin.
-
-Governance Model 
-
-Governance liquidity pool tokens (also known as governance tokens or governance tokens) are digital assets that represent ownership in a decentralized autonomous organization (DAO) or decentralized finance (DeFi) platform. They give holders the right to participate in the governance of the platform, and typically grant the holder the right to vote on decisions that affect the platform, such as changes to the platform's protocol or the allocation of funds.
-In the context of Lokey’s governance token KEY, owners can earn yield while facilitating the operation of a liquidity pool. A liquidity pool is a pool of funds that is used to facilitate the trading of a particular asset, in this case a cryptocurrency. The purpose of the liquidity pool is to ensure that there is always a sufficient supply of the asset available for traders to buy and sell, so that the price remains stable.
-Here's a general overview of how governance liquidity pool tokens might work for a cryptocurrency:
-
-The liquidity pool is created by the creators of the cryptocurrency, or by a third party who is authorized to operate the pool.
-The liquidity pool is funded with a certain amount of the cryptocurrency, as well as other assets such as stablecoins or fiat currency.
-Holders of governance liquidity pool tokens are given the right to participate in the governance of the liquidity pool. This may include the right to vote on decisions that affect the pool, such as changes to the pool's operations or the allocation of funds.
-Traders can buy and sell the cryptocurrency on a cryptocurrency exchange, using the liquidity pool as a source of supply.
-When a trader wants to buy the cryptocurrency, they place an order on the exchange. This order is matched with an existing sell order in the liquidity pool, and the trade is executed.
-When a trader wants to sell the cryptocurrency, they place a sell order on the exchange. This order is matched with an existing buy order in the liquidity pool, and the trade is executed.
-The liquidity pool is managed by a set of rules and algorithms that determine the supply and demand for the cryptocurrency, and adjust the pool accordingly. This helps to maintain the stability of the price of the cryptocurrency.
-       
-   In proof of stake (PoS) systems, like Lokey network,  the probability that a miner will be able to add a new block to the blockchain is determined by how many coins they hold. This means that the more coins a miner holds, the more likely they are to be able to add a new block to the blockchain.
-          To understand how this works, it's helpful to first understand how proof of work (PoW) systems work. In a PoW system, miners compete to solve a complex mathematical problem in order to add a new block to the blockchain. The first miner to solve the problem is awarded the right to add the new block, and is also awarded a certain number of new coins as a reward.
-          In a PoS system, the process is slightly different. Instead of competing to solve a mathematical problem, miners are chosen to add new blocks to the blockchain based on the number of coins they hold. This means that the more coins a miner holds, the more likely they are to be chosen to add a new block. The process of being chosen to add a new block is often called "forging."
-          One advantage of using a PoS system is that it is generally considered to be more energy efficient than a PoW system. Because miners are not competing to solve complex mathematical problems, they do not need to use as much computing power. This can be particularly beneficial for cryptocurrencies that are designed to be used on mobile devices, where power consumption is a major concern.
-          Overall, proof of stake is a method of securing a blockchain by allowing miners to "stake" their coins in order to have a chance of adding new blocks to the chain. This is different from proof of work systems, where miners compete to solve complex mathematical problems in order to add new blocks. 
-      Lokey achieves a proof of stake consensus mechanism by nodes voting with their tokens for proposals. Zero knowledge proofs, which will be discussed in further detail in its own section later in this documentation, are used to verify ownership of an asset without revealing the owner. This allows for pseudo anonymous transactions among participants. 
-      Lokey Name Service
-
-	Ethereum Name Service (ENS) is a decentralized system for resolving human-readable names to Ethereum addresses. It allows users to register and use domain names that are easy to remember, instead of having to use long, difficult-to-remember addresses.
-Here's how it works:
-A user registers a name that they want to use with ENS. This name must be unique, and the user must pay a small fee in Ether (the cryptocurrency of the Ethereum network) to register it.
-Once the name is registered, the user can set the address (or addresses) that the name should resolve to. This can be the address of a smart contract, a cryptocurrency wallet, or any other Ethereum address.
-When someone wants to send a transaction to the user's address, they can simply use the user's ENS name instead of the long, difficult-to-remember address.
-The ENS system will automatically resolve the name to the correct address, and the transaction will be sent to the correct destination.
-	In this way, ENS makes it easier for people to use Ethereum and interact with smart contracts on the Ethereum network. It also helps to reduce the risk of users sending transactions to the wrong address, which can result in lost funds.
-	Similar to ENS, Lokey network uses its own name service called Key Name Service or KNS. When a city coin is created on the Lokey network, the name of the city lives forever on the blockchain. Once a city is minted, meta data is awarded to the miner and stored on the Interplanetary File System or IPFS. 
-	The IPFS is a distributed file system that allows users to access and share files across a decentralized network of computers. It works by breaking large files into smaller pieces and storing those pieces across the network, rather than on a central server. When a user wants to access a file, they can use IPFS to search for and retrieve the pieces of that file from the network. This allows for faster access to files, as well as increased security and resilience, since the files are distributed across many different computers rather than being stored in a single, central location.
-
-
-Mining Nodes 
-
-	Mining nodes are specialized devices which validate transactions for a fee. Bitcoin miners  for example are computers or specialized hardware that use their processing power to verify transactions on the Bitcoin network. When a new transaction is added to the Bitcoin blockchain, miners compete to be the first to verify the transaction by solving a complex mathematical problem. The first miner to solve the problem gets to add the verified block of transactions to the blockchain and receive a reward in the form of newly minted Bitcoin. This process of verifying transactions and adding them to the blockchain is known as mining, and the computers and specialized hardware that perform this work are called miners.
-	A hashing algorithm is a mathematical function that takes an input of arbitrary size and maps it to an output of a fixed size. The output is known as a "hash value," "message digest," or simply a "hash." The input can be of any type, such as a message or a file, and the output is usually represented as a string of characters. The main purpose of a hashing algorithm is to create a unique rA hashing algorithm is a mathematical function that takes an input of arbitrary size and maps it to an output of a fixed size. The output is known as a "hash value," "message digest," or simply a "hash." The input can be of any type, such as a message or a file, and the output is usually represented as a string of characters. The main purpose of a hashing algorithm is to create a unique representation of the input data that is fixed-size and can be used to identify the original data. This is useful for a variety of applications, such as data integrity checks, password storage, and indexing data in databases.
-The Lokey hashing algrorithm is:
-1. Easy to compute the hash value for any given input.
-2. Difficult to find two different inputs that produce the same hash value (known as a "collision").
-3. Difficult to modify the input data without changing the hash value.
-4. Difficult to recreate the input data from its hash value.
-	Examples of popular hashing algorithms include the MD5 algorithm, the SHA-1 algorithm, and the SHA-256 algorithm. These algorithms are widely used for data integrity checks and are often used to generate secure hashes for password storage representation of the input data that is fixed-size and can be used to identify the original data. This is useful for a variety of applications, such as data integrity checks, password storage, and indexing data in databases.
-A good hashing algorithm should have the following properties:
-Easy to compute the hash value for any given input.
-Difficult to find two different inputs that produce the same hash value (known as a "collision").
-Difficult to modify the input data without changing the hash value.
-Impossible to recreate the input data from its hash value.
-Examples hashing algorithms include the MD5 algorithm, the SHA-1 algorithm, and the SHA-256 algorithm. These algorithms are widely used for data integrity checks and are often used to generate secure hashes for password storage.
-
-	The hashing algorithm is a mathematical function that takes an input of any size and converts it into a fixed-size output, known as a "hash" or "hash value". The input can be any type of data, such as a file, message, or even a password. The output is typically a string of numbers and letters of a fixed length, and it is always the same size for a given input.
-	The key characteristic of a hashing algorithm is that it is a one-way function, meaning that it is very easy to compute the hash value for any given input, but it is practically impossible to determine the original input by only knowing the hash value. This makes hashing algorithms useful for storing and verifying sensitive information, such as passwords, without actually storing the password itself.
-	To create a hash, the user inputs data, in the case of Lokey this is the wallet signing a transaction, which then is processed through the hashing algorithm, and the resulting hash value is stored. When someone wants to verify the input data, they simply run the same data through the same algorithm, and compare the resulting hash value to the stored value. If the two values match, then it is highly likely that the input data is correct. However, if the values do not match, then the input data is almost certainly incorrect.
-	Hashing algorithms are designed to be fast and efficient, so that they can handle large amounts of data quickly. They are also designed to be collision-resistant, meaning that it is very difficult to find two different inputs that produce the same hash value. This is important because if two inputs could produce the same hash value, then it would be possible to "trick" the system by presenting the same hash value for two different inputs, making it difficult to verify the authenticity of the input data
-.SHA-3 is a cryptographic hashing algorithm that is used to generate a unique fixed-size string, called a hash, from an input of arbitrary size. The hash is typically used as a digital signature for a file, message, or other data.
-          SHA-3 uses the Keccak algorithm, which was designed by Guido Bertoni, Joan Daemen, Michael Peeters, and Gilles Van Assche. It is an iterative hash function that operates on fixed-size blocks of data, called "chunks."
-          To generate a hash using SHA-3, the input data is first divided into chunks of a fixed size. The SHA-3 algorithm then processes each chunk using a combination of mathematical operations, such as XOR and modular addition, to generate a unique hash value for each chunk. The resulting hash values are then combined to produce the final hash for the entire input. 
-          When a Lokey wallet is generated, a 10 digit name with A-Z and 0 to 10 characters sets username is created which is linked to the city of the user. This is achieved using geolocation to determine if the minting wallet is minting their city. The username, city name, and the nonce number are run through a Keccak algorithm to generate a wallet public and private address. Lokey uses SHA-3 for maintaining a scalable and secure network ecosystem. 
-          One of the key features of SHA-3 is its resistance to "collision attacks," in which an attacker attempts to generate two different inputs that produce the same hash value. SHA-3 uses a complex mathematical structure called a "sponge function" to make it difficult for an attacker to generate collisions. This makes it a secure option for generating digital signatures and other applications that rely on the integrity of the input data.
-	Long-range radio technology uses radio waves to transmit information over long distances. Radio waves are a type of electromagnetic radiation, which means they are waves of electric and magnetic energy that can travel through the air. Radio waves are typically generated by an antenna, which converts electric currents into radio waves and sends them out into the air. The waves then travel through the air at the speed of light until they reach the antenna of a receiver, where they are converted back into electric currents and used to recreate the original information.
-
-	There are many different types of long-range radio technology, and the exact way that they work can vary depending on the specific type of technology. For example, some long-range radio technologies use low-frequency radio waves that can travel long distances over land or water, while others use high-frequency radio waves that can be used for short-range communication but are able to penetrate through solid objects. In general, however, all long-range radio technology works by using radio waves to transmit information over long distances.
-
-Lokey mining devices also called ‘Nodes’ use long range radio to communicate across the network. Long-range radio technology uses radio waves to transmit information over long distances. Radio waves are a type of electromagnetic radiation, which means they are waves of electric and magnetic energy that can travel through the air. Radio waves are typically generated by an antenna, which converts electric currents into radio waves and sends them out into the air. The waves then travel through the air at the speed of light until they reach the antenna of a receiver, where they are converted back into electric currents and used to recreate the original information.
-
-	There are many different types of long-range radio technology, and the exact way that they work can vary depending on the specific type of technology. For example, some long-range radio technologies use low-frequency radio waves that can travel long distances over land or water, while others use high-frequency radio waves that can be used for short-range communication but are able to penetrate through solid objects. In general, however, all long-range radio technology works by using radio waves to transmit information over long distances. The Lokey nodes generally communicate 5 to 10 miles depending on a number of factors including elevation and relative proximity to other nodes on the network. 
-
-
-
